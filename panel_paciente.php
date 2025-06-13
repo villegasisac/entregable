@@ -26,7 +26,7 @@
         </section>
 
         <section class="history">
-            <h2>Mi Historial Reciente</h2>
+            <h2>Mi Historial Reciente me gusta el pene</h2>
             <ul id="history-list">
                 <p>Cargando historial...</p>
             </ul>
