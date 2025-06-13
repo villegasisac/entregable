@@ -1,0 +1,457 @@
+/* css/panel.css */
+
+/* Fuentes y estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #4CAF50; /* Verde */
+    --secondary-color: #2196F3; /* Azul */
+    --success-color: #4CAF50;
+    --danger-color: #f44336; /* Rojo */
+    --warning-color: #FFC107; /* Amarillo para pending */
+    --text-color: #333;
+    --light-text-color: #f2f2f2;
+    --bg-color: #e9f2f0;
+    --panel-bg: #ffffff;
+    --header-bg: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --input-border: #ccc;
+    --input-focus-border: var(--primary-color);
+    --card-border: #e0e0e0;
+}
+
+/* Reset básico */
+body, h1, h2, h3, h4, h5, h6, p, ul, li, form, input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: #f6f8fa;
+    color: #222;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado del Panel */
+.panel-header {
+    background: #1976d2;
+    color: #fff;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.panel-header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.panel-header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+#clock {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--primary-color);
+    background-color: #e6ffe6;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-logout {
+    background: #fff;
+    color: #1976d2;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+.btn-logout:hover {
+    background: #e3eaf6;
+}
+
+/* Contenido Principal del Panel */
+main.panel-container {
+    max-width: 1100px;
+    margin: 32px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    padding: 32px 24px;
+}
+
+.panel-container {
+    flex-grow: 1;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: var(--panel-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+@media (min-width: 992px) {
+    .panel-container {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+    }
+}
+
+section {
+    margin-bottom: 32px;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+section h2, section h3 {
+    color: #1976d2;
+    margin-bottom: 12px;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block; /* Para que la línea solo cubra el texto */
+}
+
+section h3 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+
+/* Estilos de Botones (similares a style.css pero adaptados) */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary {
+    background: #1976d2;
+    color: #fff;
+}
+.btn-primary:hover {
+    background: #1256a0;
+}
+
+.btn-success {
+    background: #43a047;
+    color: #fff;
+}
+.btn-success:hover {
+    background: #357a38;
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    color: #222;
+}
+.btn-secondary:hover {
+    background: #bdbdbd;
+}
+
+.btn-small {
+    padding: 4px 10px;
+    font-size: 0.95em;
+}
+
+/* Tarjetas de Recordatorio (Paciente) */
+.reminder-card, .med-card {
+    background-color: #fcfcfc;
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Por defecto, luego flex-row */
+    align-items: flex-start; /* Por defecto, luego center */
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.reminder-card:hover, .med-card:hover {
+    transform: translateY(-3px);
+}
+
+.reminder-card .time {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--secondary-color);
+    flex-basis: 100px; /* Ancho fijo para la hora en desktop */
+    text-align: center;
+    min-width: 80px;
+}
+
+.reminder-card .details, .med-card .details {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.reminder-card .med-name, .med-card h3 {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.reminder-card .med-dose, .med-card p {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.reminder-card .med-instructions {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.reminder-card .actions, .med-card .med-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px; /* Para móvil, debajo de los detalles */
+}
+
+.btn-confirm {
+    background-color: var(--success-color);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #43A047;
+}
+
+.btn-skip {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-skip:hover {
+    background-color: #d32f2f;
+}
+
+/* Adaptación para pantallas más grandes de recordatorios */
+@media (min-width: 768px) {
+    .reminder-card, .med-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reminder-card .actions, .med-card .med-actions {
+        margin-top: 0; /* No hay margen superior en desktop */
+    }
+}
+
+
+/* Historial */
+#history-list, #patient-history-list {
+    list-style: none;
+    padding: 0;
+}
+
+#history-list li, #patient-history-list li {
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+}
+
+.status-taken {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.status-skipped {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.status-pending { /* Para casos donde podría mostrarse un estado pendiente en el historial */
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+/* Formularios dentro del panel (selects, inputs) */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input, select, textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #b0b8c1;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background: #f9fafb;
+    transition: border 0.2s;
+}
+.form-input:focus, select:focus, textarea:focus {
+    border-color: #1976d2;
+    outline: none;
+}
+
+/* Modal Estilos */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija para cubrir toda la pantalla */
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Habilitar scroll si el contenido es grande */
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 28px 32px;
+    border-radius: 10px;
+    min-width: 320px;
+    max-width: 420px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    position: relative;
+    animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.5em;
+    color: #888;
+    cursor: pointer;
+}
+.close-button:hover {
+    color: #1976d2;
+}
+
+/* Estilos de mensajes (para el JavaScript) */
+.message-info, .message-error, .message-success {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-align: center;
+}
+
+.message-info {
+    background-color: #e0f2f7; /* Light Blue */
+    color: #01579B; /* Dark Blue */
+    border: 1px solid #B3E5FC;
+}
+
+.message-error {
+    background-color: #ffebee; /* Light Red */
+    color: #C62828; /* Dark Red */
+    border: 1px solid #EF9A9A;
+}
+
+.message-success {
+    background-color: #e8f5e9; /* Light Green */
+    color: #2E7D32; /* Dark Green */
+    border: 1px solid #A5D6A7;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 900px) {
+    main.panel-container {
+        padding: 18px 4px;
+    }
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 10px;
+    }
+    .logo {
+        font-size: 1.3rem;
+    }
+    #medication-form-modal .modal-content {
+        min-width: 90vw;
+        max-width: 98vw;
+        padding: 18px 6vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .panel-header {
+        padding: 8px 2vw;
+    }
+    main.panel-container {
+        padding: 8px 2vw;
+    }
+    h2, h3 {
+        font-size: 1.1em;
+    }
+    .btn, button {
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    #medication-form-modal .modal-content {
+        padding: 10px 2vw;
+    }
+}

@@ -1,0 +1,197 @@
+/* css/style.css */
+
+/* Fuentes y estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #4CAF50; /* Verde vibrante */
+    --secondary-color: #2196F3; /* Azul para acciones secundarias */
+    --success-color: #4CAF50;
+    --danger-color: #f44336;
+    --text-color: #333;
+    --light-text-color: #f2f2f2;
+    --bg-color: #f8f9fa;
+    --header-bg: #ffffff;
+    --footer-bg: #333;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado */
+.main-header {
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    box-shadow: var(--box-shadow);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.main-header nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 20px;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+/* Botones genéricos (reutilizables) */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #43A047; /* Un poco más oscuro */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #1976D2; /* Un poco más oscuro */
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #43A047;
+    transform: translateY(-2px);
+}
+
+/* Sección Hero (Bienvenida) */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/hero-bg.jpg') no-repeat center center/cover; /* Asegúrate de tener una imagen en /img/hero-bg.jpg */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    flex-grow: 1; /* Permite que ocupe el espacio disponible */
+    display: flex;
+    align-items: center; /* Centrar contenido verticalmente */
+    justify-content: center; /* Centrar contenido horizontalmente */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+/* Pie de página */
+.main-footer {
+    background-color: var(--footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividad básica */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-header nav {
+        margin-top: 15px;
+    }
+
+    .main-header nav a {
+        margin: 0 10px;
+        display: inline-block;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header .logo {
+        font-size: 1.8em;
+    }
+
+    .main-header nav a {
+        padding: 5px 10px;
+        margin: 0 5px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+}
